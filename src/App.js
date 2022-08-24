@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import StudentList from './components/student-list/StudentList';
+import SearchBox from './components/searchbox/SearchBox';
 
 import './App.css';
 
@@ -41,11 +42,10 @@ class App extends Component {
 
         return (
             <div className="App">
-                <input
+                <SearchBox
                     className="search-box"
-                    type="text"
+                    changeHandler={searchHandler}
                     placeholder="Student Name"
-                    onChange={searchHandler}
                 />
                 <StudentList students={filtered} />
             </div>
