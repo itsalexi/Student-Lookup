@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import StudentList from './components/student-list/StudentList';
+
 import './App.css';
 
 class App extends Component {
@@ -7,6 +9,7 @@ class App extends Component {
 
         this.state = {
             students: [],
+            searchField: '',
         };
     }
 
@@ -18,16 +21,33 @@ class App extends Component {
             });
     }
 
+    searchHandler = (event) => {
+        // Everytime the input changes, we store the search field to the state
+        // So everytime it changes, we re-render the DOM with the newly filtered data
+        const search = event.target.value;
+        this.setState({ searchField: search });
+    };
+
     render() {
+        const { students, searchField } = this.state;
+        const { searchHandler } = this;
+
+        // Everytime we re-render the app, we filter through the students array.
+        let filtered = students.filter((student) => {
+            return student.name
+                .toLowerCase()
+                .includes(searchField.toLowerCase());
+        });
+
         return (
             <div className="App">
-                {this.state.students.map((student) => {
-                    return (
-                        <div key={student.id}>
-                            <h1>{student.name}</h1>
-                        </div>
-                    );
-                })}
+                <input
+                    className="search-box"
+                    type="text"
+                    placeholder="Student Name"
+                    onChange={searchHandler}
+                />
+                <StudentList students={filtered} />
             </div>
         );
     }
