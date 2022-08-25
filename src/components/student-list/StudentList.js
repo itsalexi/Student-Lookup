@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import Student from '../Student';
+import Student from '../Student/Student';
+import './StudentList.css';
 
 class StudentList extends Component {
     render() {
@@ -7,7 +8,14 @@ class StudentList extends Component {
         return (
             <div className="student-list">
                 {students.map((student) => {
-                    return <Student name={student.name} key={student.id} />;
+                    return (
+                        <Student
+                            name={student.name}
+                            id={student.id}
+                            key={student.id}
+                            email={student.email}
+                        />
+                    );
                 })}
             </div>
         );
