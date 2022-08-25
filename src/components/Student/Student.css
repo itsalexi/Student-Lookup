@@ -8,6 +8,11 @@
     border-radius: 1em;
 }
 
+.student-card:hover {
+    transform: scale(1.03);
+    transition: all 0.2s;
+}
+
 .student-info {
     height: 100%;
     width: 100%;
