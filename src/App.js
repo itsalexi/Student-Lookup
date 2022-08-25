@@ -2,7 +2,6 @@ import { Component } from 'react';
 import StudentList from './components/student-list/StudentList';
 import SearchBox from './components/searchbox/SearchBox';
 import Header from './components/header/Header';
-import './App.css';
 
 class App extends Component {
     constructor() {
@@ -46,7 +45,7 @@ class App extends Component {
                     <h1 className="title">Student Lookup</h1>
                     <SearchBox
                         changeHandler={searchHandler}
-                        placeholder="Student Name"
+                        placeholder="Find student"
                     />
                 </Header>
                 <StudentList students={filtered} />
